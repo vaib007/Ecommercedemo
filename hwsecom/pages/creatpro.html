@@ -9,48 +9,56 @@
 </style>
 
 
-<div class="container">
+<div class="container" ng-controller="creatproController">
     <div class="row">
-<!--        col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12-->
-            <div class="col-md-3">
-                <form class="form-setup">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Product ID</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <form class="form-vertical requireValidation form-setup">
+                    <div class="form-group row">
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="product id">Product ID</label>
+                        <input type="text" class="form-control" ng-model="pro_id">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Product Name</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <div class="form-group row">
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <label for="product name">Product Name<span class="astrik">*</span></label>
+                        <input type="text" class="form-control" ng-model="name">
+                        </div>
                     </div>
-                     <div class="form-group">
-                        <label for="exampleInputPassword1">Price</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-                                    <div class="input-group-addon">.00</div>
+                     <div class="form-group row">
+                          <div class="col-lg-3 col-md-3 col-sm-6">
+                            <label for="price">Price</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="value" class="form-control" mg-model="price">
+                            </div>
                          </div>
                     </div>
-                     <div class="form-group">
-                        <label for="exampleInputPassword1">Manufacturer Part No.</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                     <div class="form-group row">
+                         <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="manufacturer part no">Manufacturer Part No.</label>
+                        <input type="value" class="form-control" ng-model="manufacture_num">
+                         </div>
                     </div>
                     
                     
-                     <div class="form-group">
-                        <label for="exampleInputPassword1">Weight</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                     <div class="form-group row">
+                         <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="weight">Weight</label>
+                        <input type="value" class="form-control" ng-model="weight">
+                         </div>
                     </div>
                     
                     
-                     <div class="form-group">
-                        <label for="exampleInputPassword1">Primary Category</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                     <div class="form-group row">
+                         <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="category">Primary Category<span class="astrik">*</span></label>
+                        <input type="text" class="form-control" ng-model="prim_cat">
+                         </div>
                     </div>
                                     
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-click="Create()">Submit</button>
                     
                 </form>
-            </div>
      </div>
 </div>    
 

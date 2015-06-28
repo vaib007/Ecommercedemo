@@ -1,0 +1,660 @@
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<div class="container" ng-controller="show_proController">
+    <div class="row">
+        
+          <button type="button" class="btn btn-info btn-lg" id="clikme" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+    
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        </div>
+        </div>
+
+<!-- This div is for product details       -->
+        
+        <div class="col-lg-12 col-md-12">
+            <div class="product-details">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">{{ pro_deatils[1] }}</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 divider-vertical">
+                                <!-- upper edit button -->
+                                <div class="row">
+                                    <a class="pull-right" title="Edit Product Details" data-dialog-width="half" 
+                                       data-dialog-href="somthing ajax by product id" href="#here should be linked">
+                                        <i class="fa fa-pencil pull-left"></i>
+                                    </a>
+                                </div>
+                                <!--details and imag block row-->
+                                <div class="row">
+                                    <div id="product-main-image" class="col-lg-4 col-md-4 col-sm-3">
+                                        <img class="small-image" alt="jk" style="width:100px;height:100px" src="/assest/hwc.png">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-9">
+                                        <dl class="dl-horizontal dl-medium">
+                                            <dt>Price</dt>
+                                            <dd>{{ pro_details[2] }}</dd>
+                                            <dt>Weight</dt> 
+                                            <dd>{{ pro_details[4] }}</dd>
+                                            <dt>Primary Category</dt>
+                                            <dd>{{ pro_details[5] }}</dd>
+                                            <dt><abbr title="Manufacturer Part No.">MPN</abbr></dt>
+                                            <dd>{{ pro_details[3] }}</dd>
+                                            <dt>Barcode</dt>
+                                            <dd><a title="Product Barcode" target="_blank" href="#">
+                                                <i class="pdf-icon"></i>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 product-dates">
+                                <ul class="progressbarv2">
+                                    <li>
+                                        <ul class="progressbar-content">
+                                            <li>Created</li>
+                                            <li>06-25-2015</li>
+                                            <li class="created active"></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="progressbar-content">
+                                            <li>Discontinuation Date</li>
+                                            <li><a><i class="fa fa-plus custom-pointer"></i></a></li>   
+                                            <li class="discontinued ">
+                                                <input id="salesDiscontinuationDate" class="input-small date-picker hasDatepicker"                                                                  type="text" form="product-status" name="salesDiscontinuationDate">
+                                            <button class="ui-datepicker-trigger" type="button"></button>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <form id="product-status" class="ajaxMe js-change-submit" data-errormethod=".product-dates" data-successmethod=".product-dates" action="" method="post">
+                                <input id="productId" type="hidden" value="1235" name="productId">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="productVariations">
+                <div id="productVariations">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title">Variants</span>
+                        </div>
+                        <div class="panel-body">
+                            No feature is available to create product variations.
+                            <div id="product-feature-values"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="channelSettings">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">Sales Channel</span>
+                            <span class="panel-buttons">
+                                <ul>
+                                    <li>
+                                        <a class="btn btn-default pull-right" title="Add Sales Chhanel" data-dialog-width="half" id="btn-show-model">Add</a>
+</li>
+</ul>
+</span>
+</div>
+<div class="panel-body">
+<h6>No WebSite Found</h6>
+</div>
+</div>
+</div>
+    
+            <div id="product-images">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-buttons">
+                    <ul>
+                        <li><a class="btn btn-default pull-right" title="Add Product Image" data-dialog-width="half" data-dialog-href="/commerce/control/UploadProductImage?productId=1235" href="/commerce/control/UploadProductImage?productId=1235">Add</a>
+                        </li>
+                    </ul>
+                </span>
+                <span class="panel-title">Image Gallery</span>
+            </div>  
+            <div class="panel-body ">
+                <h5>No image available for this product.</h5>
+            </div>
+        </div>
+    </div>
+        
+            <div id="crossSell">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-buttons">
+                    <ul>
+                        <li>
+                            <div class="btn-group add-cross-sell">
+                                <a class="btn btn-default" data-dialog-width="half" data-dialog-href="/commerce/control/UploadAndImportProductAssocCSVFile?configId=8004&productId=1235&productAssocTypeId=PRODUCT_COMPLEMENT" title="Import Cross Sell Product" href="/commerce/control/UploadAndImportProductAssocCSVFile?configId=8004&productId=1235&productAssocTypeId=PRODUCT_COMPLEMENT">
+                                    <i class="fa fa-download"></i>Import</a>
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a target="_blank" href="/commerce/control/ViewImportResult?configId=8004">Results</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn-group add-cross-sell">
+                                <a class="btn btn-default" title="Export Cross Sell Product" href="/commerce/control/exportProductAssocInCsvFile?                                   configId=8004&fileTypeEnumId=FILE_CSV&productId=1235&productAssocTypeId=PRODUCT_COMPLEMENT">
+                                    <i class="fa fa-upload"></i>Export</a>
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a target="_blank" href="/commerce/control/ViewExportResult?configId=8004">Results</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-default add-cross-sell" title="Add Cross Sell Product" data-toggle-hide=".add-cross-sell"                        data-toggle-display=".add-new-cross-sell-product" type="button">Add</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-default add-new-cross-sell-product" style="display:none;" data-toggle-hide=".add-new-cross-                              sell-product" data-toggle-display=".add-cross-sell" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </span>
+                <span class="panel-title">Cross Sell</span>
+            </div>
+            <div class="panel-body ">
+                <div class="add-new-cross-sell-product" style="display:none;">
+                    <form class="ajaxMe requireValidation" data-errormethod="#progress-bar, #crossSell" data-successmethod="#progress-bar,                                  #crossSell" action="/commerce/control/addCrossSellProduct" method="post" novalidate="novalidate">
+                        <input type="hidden" value="1235" name="productId">
+                        <div class="form-group row">
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <label for="productIdTo">
+                                    Product<span class="asterisk"> *</span>
+                                </label>
+                                <input id="productIdTo" class="autoCompleter required form-control lookup ui-autocomplete-input" type="text"                                data-param-source="" data-action="/commerce/control/AutoCompleteProduct?searchValueFieldName=produc
+                                    tIdTo&entityName=Product&searchfield=productId, productName, internalName&searchDistinct=" autofocus=""                                 placeholder="" tabindex="" size="" maxlength="" data-lookup-field="#productIdTo" data-lookup-title="Products" data-                                     lookup-url="SearchProductLookup?isVirtual=Y" data-field-name="" data-successmethod="" data-add-new-suggestions-url="" data-group-element="" data-label="Product" value="" name="productIdTo" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                                <a data-dialog-href="SearchProductLookup?isVirtual=Y" href="#" title="Products" data-lookup-field="#productIdTo">
+                                    <i class="fa fa-list-alt fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <button class="btn btn-default relative" type="submit">Add
+                                    <span class="ajax-loader abs" style="display:none"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <h5 class="add-cross-sell">To add Cross Sell Product,
+                    <a title="Add Cross Sell Product" data-toggle-hide=".add-cross-sell" data-toggle-display=".add-new-cross-sell-product" href="#">click here</a>.</h5>
+            </div>
+        </div>
+    </div>
+    
+            <div id="productCategories">
+<div class="panel panel-default">
+<div class="panel-heading">
+<span class="panel-buttons">
+<ul>
+<li>
+<button class="btn btn-default pull-right addCategory" title="Add Product In Category" data-toggle-display=".addNewCategory" data-toggle-hide=".addCategory">Add</button>
+</li>
+</ul>
+</span>
+<span class="panel-title">Categories</span>
+</div>
+<table class="table table-bordered table-condensed table-hover">
+<thead>
+<tr>
+<th class="col-lg-3 col-md-3 col-sm-2">Name</th>
+<th class="col-lg-7 col-md-7 col-sm-8">Dates</th>
+<th class="col-lg-1 col-md-2 col-sm-2">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="addNewCategory active" style="display:none;">
+<td>
+<input id="productCategoryId" class="autoCompleter required form-control ui-autocomplete-input" type="text" form="addProductToCategory" data-param-source="" data-action="/commerce/control/AutoCompleteProductCategory?searchValueFieldName=productCategoryId&entityName=ProductCategory&searchfield=productCategoryId, categoryName&searchDistinct=" autofocus="" placeholder="" tabindex="" size="" maxlength="" data-field-name="" data-successmethod="" data-add-new-suggestions-url="" data-group-element="" data-label="Product Category" value="" name="productCategoryId" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+</td>
+<td>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">From</span>
+<span class="view-calendar">
+<input id="fromDate_categoryIndex_i18n" class="form-control datepicker" type="text" maxlength="30" size="25" value="2015-06-25 19:32:24.700" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" autocomplete="off" name="fromDate_i18n">
+<input id="fromDate_categoryIndex" class="date-time-picker form-control hasDatepicker" type="text" data-min-date="0" data-short-date-input="false" maxlength="30" size="25" value="2015-06-25 19:32:24.700" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" style="height:1px;width:1px;border:none;background-color:transparent" name="fromDate">
+<button class="ui-datepicker-trigger" type="button"></button>
+<input type="hidden" value="Timestamp" name="">
+</span>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">To</span>
+<span class="view-calendar">
+<input id="thruDate_categoryIndex_i18n" class="form-control datepicker" type="text" maxlength="30" size="25" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" autocomplete="off" name="thruDate_i18n">
+<input id="thruDate_categoryIndex" class="date-time-picker form-control hasDatepicker" type="text" data-min-date="0" data-short-date-input="false" maxlength="30" size="25" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" style="height:1px;width:1px;border:none;background-color:transparent" name="thruDate">
+<button class="ui-datepicker-trigger" type="button"></button>
+<input type="hidden" value="Timestamp" name="">
+</span>
+</div>
+</div>
+</td>
+<td>
+<ul class="list-unstyled list-inline">
+<li>
+<form id="addProductToCategory" class="requireValidation ajaxMe" data-errormethod="#productCategories" data-successmethod="#productCategories" action="/commerce/control/addProductToCategory" method="post" novalidate="novalidate">
+<input type="hidden" value="1235" name="productId">
+<input type="hidden" value="9000" name="productStoreId">
+<button class="btn-link relative" title="Save" type="submit">
+<i class="fa fa-floppy-o"></i>
+<span class="ajax-loader abs" style="display:none"></span>
+</button>
+</form>
+</li>
+<li>
+<button class="btn-link" title="Cancel" data-toggle-display=".addCategory" data-toggle-hide=".addNewCategory">
+<i class="fa fa-times"></i>
+</button>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>HTML Books</td>
+<td>
+<input class="productCategory_o_0" type="hidden" form="removeProductFromCategory_o_0" value="10012" name="productCategoryId">
+<input class="productCategory_o_0" type="hidden" form="removeProductFromCategory_o_0" value="1235" name="productId">
+<input class="productCategory_o_0" type="hidden" form="removeProductFromCategory_o_0" value="2015-06-25 17:50:11.000" name="fromDate">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">From</span>
+<input class="form-control" type="text" readonly="" value="06/25/2015 05:50:11 PM" name="fromDateToDisplay">
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">To</span>
+<span class="view-calendar">
+<input id="endDate_0_i18n" class="form-control productCategory_o_0 datepicker" type="text" maxlength="30" size="25" form="removeProductFromCategory_o_0" title="Format: yyyy-MM-dd HH:mm:ss.SSS" autocomplete="off" name="thruDate_i18n">
+<input id="endDate_0" class="date-time-picker form-control productCategory_o_0 hasDatepicker" type="text" data-min-date="0" data-short-date-input="false" maxlength="30" size="25" form="removeProductFromCategory_o_0" title="Format: yyyy-MM-dd HH:mm:ss.SSS" style="height:1px;width:1px;border:none;background-color:transparent" name="thruDate">
+<button class="ui-datepicker-trigger" type="button"></button>
+<input type="hidden" value="Timestamp" name="">
+</span>
+</div>
+</div>
+</td>
+<td>
+<ul class="list-unstyled list-inline">
+<li>
+<form id="updateProductToCategory_o_0" class="ajaxMe requireValidation" data-paramsource=".productCategory_o_0" data-errormethod="#productCategories" data-successmethod="#productCategories" action="/commerce/control/updateProductToCategory" method="post" novalidate="novalidate">
+<button class="btn-link relative" title="Save" type="submit">
+<i class="fa fa-floppy-o"></i>
+<span class="ajax-loader abs" style="display:none"></span>
+</button>
+</form>
+</li>
+<li>
+<form id="removeProductFromCategory_o_0" class="ajaxMe requireValidation" data-errormethod="#productCategories" data-successmethod="#productCategories" action="/commerce/control/removeProductFromCategory" method="post" novalidate="novalidate">
+<button class="btn-link js-confirm-me" data-confirm-message="Are you sure you want to remove product from category HTML Books?" title="Delete" type="submit">
+<i class="fa fa-trash-o"></i>
+</button>
+</form>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+    
+            <div id="saleRules">
+<div class="panel panel-default">
+<div class="panel-heading">
+<span class="panel-title">Pricing</span>
+</div>
+<table class="table table-bordered table-condensed table-hover">
+<thead>
+<tr>
+<th class="col-sm-3">Name</th>
+<th class="col-sm-6">Start/End Date</th>
+<th class="col-sm-2">Price</th>
+<th class="col-sm-1">Add/Remove from Sale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="/commerce/control/ViewSale?productPriceRuleId=20100">Duumy Sale </a>
+<span class="label label-info">Sale</span>
+</td>
+<td>
+<div class="hidden-sm">
+<ul class="progressbarv2">
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Start (05-22-2015)</li>
+<li class="created"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li>
+Now
+<span class="label label-success">Active</span>
+</li>
+<li class="introduced active"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Ends (-)</li>
+<li class="discontinued"></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="visible-sm salesRule-progressbar">
+<ul class="progressbarv2">
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Start </li>
+<li>(05-22-2015)</li>
+<li class="created progressbar-left"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li>Now </li>
+<li>
+<span class="label label-success">Active</span>
+</li>
+<li class="introduced active progressbar-left"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Ends</li>
+<li>(-)</li>
+<li class="discontinued progressbar-left"></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+<td>
+<ul class="list-unstyled">
+<li>
+<del>$250.00</del>
+</li>
+<li> $212.50 </li>
+</ul>
+</td>
+<td>
+<form id="saleRule_0" class="ajaxMe js-change-submit" data-errormethod="#saleRules" data-successmethod="#saleRules" action="/commerce/control/addProductInSaleRule" method="post">
+<input type="hidden" value="1235" name="productIds">
+<input type="hidden" value="20100" name="productPriceRuleId">
+<div>
+<label class="show relative" for="productSaleRule_0">
+<input id="productSaleRule_0" type="checkbox">
+</label>
+</div>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+<a href="/commerce/control/ViewSale?productPriceRuleId=20070">Summer Season Sale</a>
+<span class="label label-info">Sale</span>
+</td>
+<td>
+<div class="hidden-sm">
+<ul class="progressbarv2">
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Start (05-05-2015)</li>
+<li class="created"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li>
+Now
+<span class="label label-success">Active</span>
+</li>
+<li class="introduced active"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Ends (-)</li>
+<li class="discontinued"></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="visible-sm salesRule-progressbar">
+<ul class="progressbarv2">
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Start </li>
+<li>(05-05-2015)</li>
+<li class="created progressbar-left"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li>Now </li>
+<li>
+<span class="label label-success">Active</span>
+</li>
+<li class="introduced active progressbar-left"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Ends</li>
+<li>(-)</li>
+<li class="discontinued progressbar-left"></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+<td>
+<ul class="list-unstyled">
+<li>
+<del>$250.00</del>
+</li>
+<li> $225.00 </li>
+</ul>
+</td>
+<td>
+<form id="saleRule_1" class="ajaxMe js-change-submit" data-errormethod="#saleRules" data-successmethod="#saleRules" action="/commerce/control/addProductInSaleRule" method="post">
+<input type="hidden" value="1235" name="productIds">
+<input type="hidden" value="20070" name="productPriceRuleId">
+<div>
+<label class="show relative" for="productSaleRule_1">
+<input id="productSaleRule_1" type="checkbox">
+</label>
+</div>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+<a href="/commerce/control/ViewSale?productPriceRuleId=20090">Ten-Percent</a>
+<span class="label label-info">Sale</span>
+</td>
+<td>
+<div class="hidden-sm">
+<ul class="progressbarv2">
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Start (05-14-2015)</li>
+<li class="created"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li>
+Now
+<span class="label label-success">Active</span>
+</li>
+<li class="introduced active"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Ends (-)</li>
+<li class="discontinued"></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="visible-sm salesRule-progressbar">
+<ul class="progressbarv2">
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Start </li>
+<li>(05-14-2015)</li>
+<li class="created progressbar-left"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li>Now </li>
+<li>
+<span class="label label-success">Active</span>
+</li>
+<li class="introduced active progressbar-left"></li>
+</ul>
+</li>
+<li>
+<ul class="progressbar-content">
+<li class="text-muted">Ends</li>
+<li>(-)</li>
+<li class="discontinued progressbar-left"></li>
+</ul>
+</li>
+</ul>
+</div>
+</td>
+<td>
+<ul class="list-unstyled">
+<li>
+<del>$250.00</del>
+</li>
+<li> $225.00 </li>
+</ul>
+</td>
+<td>
+<form id="saleRule_2" class="ajaxMe js-change-submit" data-errormethod="#saleRules" data-successmethod="#saleRules" action="/commerce/control/addProductInSaleRule" method="post">
+<input type="hidden" value="1235" name="productIds">
+<input type="hidden" value="20090" name="productPriceRuleId">
+<div>
+<label class="show relative" for="productSaleRule_2">
+<input id="productSaleRule_2" type="checkbox">
+</label>
+</div>
+</form>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>  
+    
+            <div id="product-reviews">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-title">Reviews</span>
+            </div>
+            <div class="panel-body">
+                <h5>No reviews found for this product.</h5>
+            </div>
+        </div>
+    </div>
+    
+            <div id="product-assets">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-buttons">
+                    <ul>
+                        <li class="relative">
+                                <button class="btn btn-default pull-right dropdown-toggle"
+                                        title="Add Content" data-toggle="dropdown">Add</button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a title="Summary" data-dialog-href="/commerce/control/AddProductSummary?productId=1235" 
+                                       data-dialog-width="half" href="javascript:void(0)">Summary</a>
+                                </li>
+                                <li>
+                                    <a title="Description" data-dialog-href="/commerce/control/AddUpdateProductDescription?productId=1235"
+                                       data-dialog-width="half" href="javascript:void(0)">Description</a>
+                                </li>
+                                <li>
+                                    <a title="Add Asset" data-dialog-href="/commerce/control/UploadDigitalAsset?productId=1235"                                                     href="javascript:void(0)">Digital Asset</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </span>
+                <span class="panel-title">Product Content</span>
+            </div>
+            <div class="panel-body"> There are no assets for this product. </div>
+        </div>
+    </div>
+
+            <div id="market-basket-analysis" class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">Market Basket Analysis</span>
+                    </div>
+                    <div class="panel-body">
+                        <div>No Records Found</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>    
+

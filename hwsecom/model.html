@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>model</title>
+	<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#btn-show-modal").click(function(e){
+				e.preventDefault();
+				$("#dialog").modal('show');
+				console.log("hello world");
+			});
+
+
+		});
+
+	</script>
+
+</head>
+	<body>
+
+	<a href="#" id="btn-show-modal">show</a>
+	<div class="modal fade" id="dialog">
+		<div class="modal-header">
+			<h1>My dialog </h1>
+		</div>
+		<div class="modal-body">
+		nnnvnvnvlvlnvnvnlnvlnklbmbl;mbb;lmbm;mbmbmmb;b;bmb
+		</div>
+		<div class="modal-footer">
+		<a href="#" data-dismiss="model" class="btn">close</a>
+		<a href="#" class="btn btn-primay">save</a>
+
+		</div>
+
+	</div>
+
+	 </body>
+
+
+</html>
