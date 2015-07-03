@@ -5,6 +5,14 @@
     .btn-primary, .input-group-addon, .form-control{
         border-radius: 0px;
     }
+    .link{
+        color: white;
+        text-decoration: none;
+    }
+    .link:hover{
+        text-decoration: none;
+        color: white;
+    }
     
 </style>
 
@@ -29,7 +37,7 @@
                             <label for="price">Price</label>
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" class="form-control" mg-model="price">
+                                <input type="value" class="form-control" ng-model="price">
                             </div>
                          </div>
                     </div>
@@ -56,7 +64,7 @@
                          </div>
                     </div>
                                     
-                    <button type="submit" class="btn btn-primary" ng-click="Create()">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-click="Create()"><a href="#show_product" class="link">Submit</a></button>
                     
                 </form>
      </div>

@@ -5,7 +5,6 @@
 	// configure our routes
 	hws.config(function($routeProvider)  {
 		$routeProvider
-
          .when('/', {
 				templateUrl : 'pages/login.html',
 				controller  : 'logController'
@@ -79,7 +78,7 @@
 		$scope.message = 'Everyone come and see how good I look!';
 	});
 
-	hws.controller('aboutController', function($scope) {
+	hws.controller('aboutContr1oller', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});
 
@@ -95,7 +94,8 @@
     
     hws.controller('show_proController', function($scope,ProductDetailsService) {
                                         $scope.pro_details = ProductDetailsService.getName();
-                                        console.log($scope.pro_details[0], $scope.pro_details[1], $scope.pro_details[2], $scope.pro_details[3],                                           $scope.pro_details[4], $scope.pro_details[4]);
+                                        $scope.now = new Date();
+                                        console.log($scope.pro_details[0], $scope.pro_details[1], $scope.pro_details[2], $scope.pro_details[3],                                           $scope.pro_details[4], $scope.pro_details[5]);
 	});
     
     
