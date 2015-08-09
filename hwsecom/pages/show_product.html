@@ -1,0 +1,1009 @@
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+    
+    $("#sale-btn-modal").click(function(){
+        $("#saleModal").modal();
+    });
+    
+    
+    
+    $("#img-btn-modal").click(function(){
+        $("#imageModal").modal();
+    });
+    
+    
+    
+    
+    $("#import-btn-show").click(function(){
+        $("#cross_importModal").modal();
+    });
+    
+});
+</script>
+<style type="text/css">
+    
+    .btn{
+        border-radius: 0px;
+    }
+    .border-top {
+        border-top: 1px solid #dddddd !important;
+    }
+    .border-right {
+        border-right: 1px solid #dddddd !important;
+    }
+    .border-left {
+        border-left: 1px solid #dddddd !important;
+    }
+    .border-bottom {
+        border-bottom: 1px solid #dddddd !important;
+    }
+    .panel {
+        margin-bottom: 10px;
+        border: 1px solid #dddddd ;
+        border-radius: 0px;
+    }
+    .panel-heading {
+        padding: 0;
+    }
+    .panel-title {
+        display: inline-block;
+        margin: 5px;
+    }
+    .panel-title > a {
+        text-decoration: none;
+    }
+    .panel-status {
+        display: inline-block;
+    }
+    .panel-buttons, .panel-pagination {
+        float: right;
+    }
+    .panel-buttons > ul, .panel-pagination ul {
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+    }
+    .panel-buttons > ul > li, .panel-pagination ul li {
+        display: inline-block;
+        float: left;
+    }
+    .panel-buttons > ul > li .btn, .panel-pagination ul li .btn-link {
+        padding: 6px 12px;
+    }
+    .panel-buttons > ul > li .btn, .panel-pagination ul li .btn-link {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #dddddd;
+        border-image: none;
+        border-radius: 0;
+        border-style: none none none solid;
+        border-width: medium medium medium 1px;
+    }
+    .panel-buttons > ul > li .btn.btn-default, .panel-pagination ul li .btn-link {
+        background: linear-gradient(to bottom, #e4e4e4 1%, #fefefe 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+    .panel-buttons > ul > li .btn.btn-default:hover:not([disabled]):not(.disabled), .panel-pagination ul li .btn-   link:hover:not([disabled]):not(.disabled) {
+    background: linear-gradient(to bottom, #fefefe 1%, #e4e4e4 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+    .panel-buttons > ul > li .btn.btn-primary {
+        background: linear-gradient(to bottom, #3276b1 1%, #8cd5ff 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+    .panel-buttons > ul > li .btn.btn-primary:hover:not([disabled]):not(.disabled) {
+    background: linear-gradient(to bottom, #8cd5ff 1%, #3276b1 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+    .panel-buttons > ul > li:last-child .btn, .panel-pagination ul li:last-child .btn-link {
+        border-top-right-radius: 4px;
+    }
+    .panel-buttons .dropdown-menu {
+        border-radius: 0;
+        left: inherit;
+        margin: 0;
+        right: 0;
+    }
+    .panel-buttons button:focus:active {
+        outline: medium none;
+    }
+    .panel-pagination > ul > li span {
+        border: medium none;
+        padding: 0;
+    }
+    .panel .panel-buttons .dropdown button.dropdown-toggle {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+    .panel-head-only {
+        border-bottom: 0 none;
+        border-left: 0 none;
+        border-radius: 0;
+        border-right: 0 none;
+        margin: 0;
+    }
+    .panel-head-only .panel-buttons ul li:last-child .btn {
+        border-radius: 0;
+    }:invalid.panel-head-only .panel-heading {
+        border: 0 none;
+    }
+    .panel-heading.large {
+        padding: 10px;
+    }
+    .panel .panel-buttons .dropdown button.dropdown-toggle {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+    .mycontent-left {
+        border-right: 1px solid #ccc;
+         cursor: pointer;
+    }
+    
+    
+    .progressbar {
+        counter-reset: step;
+        display: inline-block;
+        margin-left: -100px;
+        margin-top: 10px;
+        min-height: 70px;
+    }
+    
+    .progressbar li input {
+        display: none;
+    }
+    .progressbar li {
+        float: left;
+        height: 25px;
+        list-style-type: none;
+        text-align: center;
+        width: 170px;
+    }
+    
+    .progressbar .progressbar-content li .ui-datepicker-trigger {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border: medium none;
+        margin-left: -156px;
+    }
+    .progressbar .progressbar-content li button {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border: medium none;
+        margin-left: -156px;
+    }
+    .progressbar .progressbar-content .created {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -215px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    
+    .progressbar .progressbar-content li .ui-datepicker-trigger {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border: medium none;
+        margin-left: -156px;
+    }
+    
+    .progressbar .progressbar-content li button {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border: medium none;
+        margin-left: -156px;
+    }
+    .progressbar .progressbar-content .created {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -215px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    
+    .progressbar .progressbar-content .created.active {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -239px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+
+    .progressbar .progressbar-content .introduced {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -18px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    
+    .progressbar .progressbar-content .introduced.active {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -41px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    .progressbar .progressbar-content .discontinued {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -150px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    .progressbar .progressbar-content .discontinued.active {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 2px -172px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    
+    .progressbar .progressbar-content .deactive {
+        background: url("/assest/dots-sprite.png") no-repeat scroll 1px -194px rgba(0, 0, 0, 0);
+        margin-left: 73px;
+    }
+    
+    .progressbar > li:after {
+        border-top: 1px dotted;
+        color: #bbb;
+        content: "";
+        display: inline-block;
+        float: left;
+        height: 1px;
+        left: -500px;
+        margin: -10px 0 0 635px;
+        position: relative;
+        width: 157px;
+    }
+    
+    .progressbar > li:last-child:after {
+        content: none;
+    }
+    
+    .progressbar .progressbar-content .timeline-tooltip {
+        width: 20px;
+    }
+
+    .progressbar .progressbar-content .timeline-tooltip.active {
+        width: 25px;
+    }
+    
+    .progress_pro_details{
+      list-style-type: none;
+    }
+    .progress_pro_details  li{
+        float: left;
+        height: 25px;
+        list-style-type: none;
+        text-align: center;
+        width: 170px;
+
+    }
+    .progress_pro_in{
+        list-style-type: none;
+        text-align: center;
+    }
+    
+    .progress_pro_in li{
+        
+        
+    }
+    .pdf-icon{
+    background-image: url(/assest/pdf1.jpeg);    
+    }
+    #myBtn{
+        color: blue;
+        padding-right: 1%; 
+    }
+    #myBtn:hover{
+        opacity: 1.0;
+    }
+    .created{
+        background: url("../img/dots-sprite.png") no-repeat scroll rgba(0, 0, 0, 0);
+    }
+    
+    .panel-buttons{
+        float: right;
+    }
+    .panel-buttons li {
+        list-style-type: none;
+    }
+    
+</style>
+<div class="container" ng-controller="show_proController">
+<!--    modal box for product details-->
+    
+    <div class="row">
+    <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+<!--    modal box for sales channel details-->
+    <div class="row">
+    <!-- Modal -->
+        <div class="modal fade" id="saleModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+<!--    modal box for image gallery-->
+
+    <div class="row">
+    <!-- Modal -->
+        <div class="modal fade" id="imageModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    modal box for cross sell on import-->
+    <div class="row">
+    <!-- Modal -->
+        <div class="modal fade" id="cross_importModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    
+<!-- This div is for product details       -->
+        
+    <div class="col-lg-12 col-md-12">
+        <div class="product-details">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">
+                            {{pro_details[0]}}
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 divider-vertical mycontent-left">
+                                <!-- upper edit button -->
+                                <div class="row">
+                                       <span class="fa fa-pencil pull-right" id="myBtn"></span>
+                                </div>
+                                <!--details and imag block row-->
+                                <div class="row">
+                                    <div id="product-main-image" class="col-lg-4 col-md-4 col-sm-3">
+                                        <img class="small-image" alt="jk" style="width:100px;height:100px" src="/assest/hwc.png">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-9">
+                                        <dl class="dl-horizontal dl-medium">
+                                            <dt>Price</dt>
+                                            <dd>{{ pro_details[2] }} $</dd>
+                                            <dt>Weight</dt> 
+                                            <dd>{{ pro_details[4] }} lb</dd>
+                                            <dt>Primary Category</dt>
+                                            <dd>{{ pro_details[5] }}</dd>
+                                            <dt><abbr title="Manufacturer Part No.">MPN</abbr></dt>
+                                            <dd>{{ pro_details[3] }}</dd>
+                                            <dt>Barcode</dt>
+                                            <dd><a title="Product Barcode" target="_blank" href="#">
+                                                <img src="/assest/pdf.gif"/>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 product-dates">
+                                <ul class="progressbar">
+                                    <li>
+                                        <ul class="progressbar-content">
+                                            <li>Created</li>
+                                            <li>{{now | date : "dd-mm-yy"}}</li>
+                                            <li class="created active"></li>
+                                        </ul>
+                                    </li>
+                                    <li> <ul class="progressbar-content">
+                                            <li>Discontinuation Date</li>
+                                            <li>
+                                                <a><i class="fa fa-plus custom-pointer"></i></a>
+                                            </li>
+                                            <li class="discontinued"> </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <form id="product-status" class="ajaxMe js-change-submit" data-errormethod=".product-dates" data-successmethod=".product-dates" action="" method="post">
+                                <input id="productId" type="hidden" value="1235" name="productId">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <div id="productVariations">
+                <div id="productVariations">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title">Variants</span>
+                        </div>
+                        <div class="panel-body">
+                            No feature is available to create product variations.
+                            <div id="product-feature-values"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <div id="channelSettings">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-title">Sales Channel</span>
+                    <span class="panel-buttons">
+                        <ul>
+                            <li>
+                            <a class="btn btn-default pull-right" title="Add Sales Chhanel" data-dialog-width="half" id="sale-btn-modal">Add</a>
+                            </li>
+                        </ul>
+                    </span>
+            </div>
+            <div class="panel-body">
+                <h6>No WebSite Found</h6>
+            </div>
+        </div>
+    </div>
+        
+        <div id="product-images">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-buttons">
+                    <ul>
+                        <li><a class="btn btn-default pull-right" title="Add Product Image" data-dialog-width="half" data-dialog-href=""                                    id="img-btn-modal">Add</a>
+                        </li>
+                    </ul>
+                </span>
+                <span class="panel-title">Image Gallery</span>
+            </div>  
+            <div class="panel-body ">
+                <h5>No image available for this product.</h5>
+            </div>
+        </div>
+    </div>
+        
+        <div id="crossSell">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-buttons">
+                    <ul>
+                        <li>
+                            <div class="btn-group add-cross-sell">
+                                <a class="btn btn-default" data-dialog-width="half" data-dialog-href="" title="Import Cross Sell" id="import-btn-show">
+                                    <i class="fa fa-download"></i>Import</a>
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                    <li><a target="_blank" href="">Results</a></li>
+                                    </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn-group add-cross-sell">
+                                <a class="btn btn-default" title="Export Cross Sell Product" href="">
+                                <i class="fa fa-upload"></i>Export</a>
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a target="_blank" href="">Results</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-default add-cross-sell" title="Add Cross Sell Product" data-toggle-hide=".add-cross-sell"                                 data-toggle-display=".add-new-cross-sell-product" type="button">Add</button>
+                        </li>
+                        <li>
+                        <button class="btn btn-default add-new-cross-sell-product" style="display:none;" data-toggle-hide=".add-new-cross-sell-product" data-toggle-display=".add-cross-sell" type="button">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        </li>
+                    </ul>
+                </span>
+                <span class="panel-title">Cross Sell</span>
+            </div>
+            <div class="panel-body ">
+                <div class="add-new-cross-sell-product" style="display:none;">
+                    <form class="ajaxMe requireValidation" data-errormethod="#progress-bar, #crossSell" data-successmethod="#progress-bar,                                  #crossSell" action="" method="post" novalidate="novalidate">
+                        <input type="hidden" value="1235" name="productId">
+                        <div class="form-group row">
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <label for="productIdTo">
+                                    Product<span class="asterisk"> *</span>
+                                </label>
+                                <input id="productIdTo" class="autoCompleter required form-control lookup ui-autocomplete-input" type="text"                                data-param-source="" data-action="/commerce/control/AutoCompleteProduct?searchValueFieldName=produc
+                                    tIdTo&entityName=Product&searchfield=productId, productName, internalName&searchDistinct=" autofocus=""                                 placeholder="" tabindex="" size="" maxlength="" data-lookup-field="#productIdTo" data-lookup-title="Products" data-                                     lookup-url="SearchProductLookup?isVirtual=Y" data-field-name="" data-successmethod="" data-add-new-suggestions-url="" data-group-element="" data-label="Product" value="" name="productIdTo" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                                <a data-dialog-href="SearchProductLookup?isVirtual=Y" href="#" title="Products" data-lookup-field="#productIdTo">
+                                    <i class="fa fa-list-alt fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <button class="btn btn-default relative" type="submit">Add
+                                    <span class="ajax-loader abs" style="display:none"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <h5 class="add-cross-sell">To add Cross Sell Product,
+                    <a title="Add Cross Sell Product" data-toggle-hide=".add-cross-sell" data-toggle-display=".add-new-cross-sell-product" href="#">click here</a>.</h5>
+            </div>
+        </div>
+    </div>
+        
+        <div id="productCategories">
+<div class="panel panel-default">
+<div class="panel-heading">
+<span class="panel-buttons">
+<ul>
+<li>
+<button class="btn btn-default pull-right addCategory" title="Add Product In Category" data-toggle-display=".addNewCategory" data-toggle-hide=".addCategory">Add</button>
+</li>
+</ul>
+</span>
+<span class="panel-title">Categories</span>
+</div>
+<table class="table table-bordered table-condensed table-hover">
+<thead>
+<tr>
+<th class="col-lg-3 col-md-3 col-sm-2">Name</th>
+<th class="col-lg-7 col-md-7 col-sm-8">Dates</th>
+<th class="col-lg-1 col-md-2 col-sm-2">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="addNewCategory active" style="display:none;">
+<td>
+<input id="productCategoryId" class="autoCompleter required form-control ui-autocomplete-input" type="text" form="addProductToCategory" data-param-source="" data-action="/commerce/control/AutoCompleteProductCategory?searchValueFieldName=productCategoryId&entityName=ProductCategory&searchfield=productCategoryId, categoryName&searchDistinct=" autofocus="" placeholder="" tabindex="" size="" maxlength="" data-field-name="" data-successmethod="" data-add-new-suggestions-url="" data-group-element="" data-label="Product Category" value="" name="productCategoryId" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+</td>
+<td>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">From</span>
+<span class="view-calendar">
+<input id="fromDate_categoryIndex_i18n" class="form-control datepicker" type="text" maxlength="30" size="25" value="2015-06-25 19:32:24.700" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" autocomplete="off" name="fromDate_i18n">
+<input id="fromDate_categoryIndex" class="date-time-picker form-control hasDatepicker" type="text" data-min-date="0" data-short-date-input="false" maxlength="30" size="25" value="2015-06-25 19:32:24.700" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" style="height:1px;width:1px;border:none;background-color:transparent" name="fromDate">
+<button class="ui-datepicker-trigger" type="button"></button>
+<input type="hidden" value="Timestamp" name="">
+</span>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">To</span>
+<span class="view-calendar">
+<input id="thruDate_categoryIndex_i18n" class="form-control datepicker" type="text" maxlength="30" size="25" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" autocomplete="off" name="thruDate_i18n">
+<input id="thruDate_categoryIndex" class="date-time-picker form-control hasDatepicker" type="text" data-min-date="0" data-short-date-input="false" maxlength="30" size="25" form="addProductToCategory" title="Format: yyyy-MM-dd HH:mm:ss.SSS" style="height:1px;width:1px;border:none;background-color:transparent" name="thruDate">
+<button class="ui-datepicker-trigger" type="button"></button>
+<input type="hidden" value="Timestamp" name="">
+</span>
+</div>
+</div>
+</td>
+<td>
+<ul class="list-unstyled list-inline">
+<li>
+<form id="addProductToCategory" class="requireValidation ajaxMe" data-errormethod="#productCategories" data-successmethod="#productCategories" action="/commerce/control/addProductToCategory" method="post" novalidate="novalidate">
+<input type="hidden" value="1235" name="productId">
+<input type="hidden" value="9000" name="productStoreId">
+<button class="btn-link relative" title="Save" type="submit">
+<i class="fa fa-floppy-o"></i>
+<span class="ajax-loader abs" style="display:none"></span>
+</button>
+</form>
+</li>
+<li>
+<button class="btn-link" title="Cancel" data-toggle-display=".addCategory" data-toggle-hide=".addNewCategory">
+<i class="fa fa-times"></i>
+</button>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>HTML Books</td>
+<td>
+<input class="productCategory_o_0" type="hidden" form="removeProductFromCategory_o_0" value="10012" name="productCategoryId">
+<input class="productCategory_o_0" type="hidden" form="removeProductFromCategory_o_0" value="1235" name="productId">
+<input class="productCategory_o_0" type="hidden" form="removeProductFromCategory_o_0" value="2015-06-25 17:50:11.000" name="fromDate">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">From</span>
+<input class="form-control" type="text" readonly="" value="06/25/2015 05:50:11 PM" name="fromDateToDisplay">
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<div class="input-group">
+<span class="input-group-addon">To</span>
+<span class="view-calendar">
+<input id="endDate_0_i18n" class="form-control productCategory_o_0 datepicker" type="text" maxlength="30" size="25" form="removeProductFromCategory_o_0" title="Format: yyyy-MM-dd HH:mm:ss.SSS" autocomplete="off" name="thruDate_i18n">
+<input id="endDate_0" class="date-time-picker form-control productCategory_o_0 hasDatepicker" type="text" data-min-date="0" data-short-date-input="false" maxlength="30" size="25" form="removeProductFromCategory_o_0" title="Format: yyyy-MM-dd HH:mm:ss.SSS" style="height:1px;width:1px;border:none;background-color:transparent" name="thruDate">
+<button class="ui-datepicker-trigger" type="button"></button>
+<input type="hidden" value="Timestamp" name="">
+</span>
+</div>
+</div>
+</td>
+<td>
+<ul class="list-unstyled list-inline">
+<li>
+<form id="updateProductToCategory_o_0" class="ajaxMe requireValidation" data-paramsource=".productCategory_o_0" data-errormethod="#productCategories" data-successmethod="#productCategories" action="/commerce/control/updateProductToCategory" method="post" novalidate="novalidate">
+<button class="btn-link relative" title="Save" type="submit">
+<i class="fa fa-floppy-o"></i>
+<span class="ajax-loader abs" style="display:none"></span>
+</button>
+</form>
+</li>
+<li>
+<form id="removeProductFromCategory_o_0" class="ajaxMe requireValidation" data-errormethod="#productCategories" data-successmethod="#productCategories" action="/commerce/control/removeProductFromCategory" method="post" novalidate="novalidate">
+<button class="btn-link js-confirm-me" data-confirm-message="Are you sure you want to remove product from category HTML Books?" title="Delete" type="submit">
+<i class="fa fa-trash-o"></i>
+</button>
+</form>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+        
+        <div id="saleRules">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="panel-title">Pricing</span>
+                </div>
+                <table class="table table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-sm-3">Name</th>
+                            <th class="col-sm-6">Start/End Date</th>
+                            <th class="col-sm-2">Price</th>
+                            <th class="col-sm-1">Add/Remove from Sale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="">Duumy Sale </a>
+                                <span class="label label-info">Sale</span>
+                            </td>
+                            <td>
+                                <div class="hidden-sm hidden-xs">
+                                    <ul class="progressbar">
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Start (05-22-2015)</li>
+                                                <li class="created"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li>Now <span class="label label-success">Active</span></li>
+                                                <li class="introduced active"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Ends (-)</li>
+                                                <li class="discontinued"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="visible-sm salesRule-progressbar">
+                                    <ul class="progressbar">
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Start </li>
+                                                <li>(05-22-2015)</li>
+                                                <li class="created progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li>Now</li>
+                                                <li><span class="label label-success">Active</span></li>
+                                                <li class="introduced active progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Ends</li>
+                                                <li>(-)</li>
+                                                <li class="discontinued progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <del>$250.00</del>
+                                    </li>
+                                    <li> $212.50 </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <form id="saleRule_0" class="ajaxMe js-change-submit" data-errormethod="#saleRules" data-successmethod="#saleRules" action="" method="post">
+                                    <input type="hidden" value="1235" name="productIds">
+                                    <input type="hidden" value="20100" name="productPriceRuleId">
+                                    <div>
+                                        <label class="show relative" for="productSaleRule_0">
+                                            <input id="productSaleRule_0" type="checkbox">
+                                        </label>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="">Summer Season Sale</a>
+                                <span class="label label-info">Sale</span>
+                            </td>
+                            <td>
+                                <div class="hidden-sm hidden-xs">
+                                    <ul class="progressbar">
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Start (05-05-2015)</li>
+                                                <li class="created"></li>
+                                            </ul>
+                                        </li>
+                                        <li>    
+                                            <ul class="progressbar-content">
+                                                <li>Now <span class="label label-success">Active</span></li>
+                                                <li class="introduced active"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Ends (-)</li>
+                                                <li class="discontinued"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="visible-sm salesRule-progressbar">
+                                    <ul class="progressbar">
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Start </li>
+                                                <li>(05-05-2015)</li>
+                                                <li class="created progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li>Now </li>
+                                                <li><span class="label label-success">Active</span></li>
+                                                <li class="introduced active progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Ends</li>
+                                                <li>(-)</li>
+                                                <li class="discontinued progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <del>$250.00</del>
+                                    </li>
+                                    <li> $225.00 </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <form id="saleRule_1" class="ajaxMe js-change-submit" data-errormethod="#saleRules" data-successmethod="#saleRules" action="" method="post">
+                                    <input type="hidden" value="1235" name="productIds">
+                                    <input type="hidden" value="20070" name="productPriceRuleId">
+                                    <div>
+                                        <label class="show relative" for="productSaleRule_1">
+                                            <input id="productSaleRule_1" type="checkbox">
+                                        </label>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="">Ten-Percent</a> <span class="label label-info">Sale</span>
+                            </td>
+                            <td>
+                                <div class="hidden-sm hidden-xs">
+                                    <ul class="progressbar">
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Start (05-14-2015)</li>
+                                                <li class="created"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li>Now <span class="label label-success">Active</span></li>
+                                                <li class="introduced active"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Ends (-)</li>
+                                                <li class="discontinued"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="visible-sm salesRule-progressbar">
+                                    <ul class="progressbar">
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Start </li>
+                                                <li>(05-14-2015)</li>
+                                                <li class="created progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li>Now </li>
+                                                <li><span class="label label-success">Active</span></li>
+                                                <li class="introduced active progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul class="progressbar-content">
+                                                <li class="text-muted">Ends</li>
+                                                <li>(-)</li>
+                                                <li class="discontinued progressbar-left"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <del>$250.00</del>
+                                    </li>
+                                    <li> $225.00 </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <form id="saleRule_2" class="ajaxMe js-change-submit" data-errormethod="#saleRules" data-successmethod="#saleRules" action="" method="post">
+                                    <input type="hidden" value="1235" name="productIds">
+                                    <input type="hidden" value="20090" name="productPriceRuleId">
+                                    <div>
+                                        <label class="show relative" for="productSaleRule_2">
+                                            <input id="productSaleRule_2" type="checkbox">
+                                        </label>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>  
+        
+        <div id="product-reviews">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="panel-title">Reviews</span>
+            </div>
+            <div class="panel-body">
+                <h5>No reviews found for this product.</h5>
+            </div>
+        </div>
+    </div>
+        
+        <div id="product-assets">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                
+<!--
+                    <ul>
+                        <li class="relative">
+                            <button class="btn btn-default pull-right dropdown-toggle"
+                                        title="Add Content" data-toggle="dropdown">Add</button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a title="Summary" data-dialog-href="" 
+                                       data-dialog-width="half" href="">Summary</a>
+                                </li>
+                                <li>
+                                    <a title="Description" data-dialog-href=""
+                                       data-dialog-width="half" href="">Description</a>
+                                </li>
+                                <li>
+                                    <a title="Add Asset" data-dialog-href="" href="">Digital Asset</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+-->
+<!--
+                <span class="panel-title">Product Content</span>
+                <span class="panel-buttons"><button class="btn btn-default pull-right">Add</button></span>
+            </div>
+-->
+            <span class="panel-title">Product Content</span>
+                <span class="panel-buttons">
+                    <ul>
+                        <li>
+                        <a class="btn btn-default pull-right" title="Add Sales Chhanel" data-dialog-width="half" id="sale-btn-modal">Add</a>
+                        </li>
+                    </ul>
+                </span>
+           
+                
+                
+            </div>
+            <div class="panel-body"> There are no assets for this product. </div>
+        </div>
+    </div>
+        
+        <div id="market-basket-analysis" class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">Market Basket Analysis</span>
+                    </div>
+                    <div class="panel-body">
+                        <div>No Records Found</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+

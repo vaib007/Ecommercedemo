@@ -1,0 +1,72 @@
+<style>
+    .form-setup{
+        margin: 10px;
+    }
+    .btn-primary, .input-group-addon, .form-control{
+        border-radius: 0px;
+    }
+    .link{
+        color: white;
+        text-decoration: none;
+    }
+    .link:hover{
+        text-decoration: none;
+        color: white;
+    }
+    
+</style>
+
+
+<div class="container" ng-controller="creatproController">
+    <div class="row">
+                <form class="form-vertical requireValidation form-setup">
+                    <div class="form-group row">
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="product id">Product ID</label>
+                        <input type="text" class="form-control" ng-model="pro_id">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <label for="product name">Product Name<span class="astrik">*</span></label>
+                        <input type="text" class="form-control" ng-model="name">
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                          <div class="col-lg-3 col-md-3 col-sm-6">
+                            <label for="price">Price</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="value" class="form-control" ng-model="price">
+                            </div>
+                         </div>
+                    </div>
+                     <div class="form-group row">
+                         <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="manufacturer part no">Manufacturer Part No.</label>
+                        <input type="value" class="form-control" ng-model="manufacture_num">
+                         </div>
+                    </div>
+                    
+                    
+                     <div class="form-group row">
+                         <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="weight">Weight</label>
+                        <input type="value" class="form-control" ng-model="weight">
+                         </div>
+                    </div>
+                    
+                    
+                     <div class="form-group row">
+                         <div class="col-lg-3 col-md-3 col-sm-6">
+                        <label for="category">Primary Category<span class="astrik">*</span></label>
+                        <input type="text" class="form-control" ng-model="prim_cat">
+                         </div>
+                    </div>
+                                    
+                    <button type="submit" class="btn btn-primary" ng-click="Create()"><a href="#show_product" class="link">Submit</a></button>
+                    
+                </form>
+     </div>
+</div>    
+
